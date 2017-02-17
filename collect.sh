@@ -7,7 +7,7 @@ DATA_PATH="$SCRIPT_PATH/data"
 TEMPFILE=`tempfile`
 
 ping() {
-    CURL=`curl -s -m 10 -o /dev/null -w "%{http_code} %{time_total}" $2`
+    CURL=`curl -L -s -m 10 -o /dev/null -w "%{http_code} %{time_total}" $2`
 
     if [ $? -eq 0 ]; then
       IFS=' ' read -ra ADDR <<< "$CURL"
