@@ -33,7 +33,8 @@
     90,
     90,
     null,
-    null
+    null,
+    10
   ],
   "alertmailto": "user@localhost"
 }
