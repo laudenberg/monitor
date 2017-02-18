@@ -28,7 +28,7 @@ Everything is written to files in the `data`-directory. For every timespan in `m
 
 ## `collect.sh`
 
-`collect.sh` is the workhorse for collecting data and invoking alerts when critical values are observed. You ususally don't need to specify arguments directly, because `cron.sh` builds its command line from `config.json`. It builds a line in the log file based on and in the order of arguments specified:
+`collect.sh` is the workhorse for collecting data and invoking alerts when critical values are observed. You ususally don't need to specify arguments directly, because `cron.sh` builds its command line from `config.json`. `collect.sh` writes a line in the log file based on and in the order of arguments specified:
 
 * `-timestamp` adds a timestamp in seconds since epoch.
 * `-load` adds the one minute load average.
@@ -42,7 +42,7 @@ A line in the log file could look like this:
 
 `1487342401 0.11 30 14 47580 124069 0.078`
 
-Additionally `collect.sh` needs to know at what critical values mails need to be sent and from which config file these commands are read. The shell script dows not evaluate the config file by itself but passes it on to scripts which need it.
+Additionally `collect.sh` needs to know at what critical values mails need to be sent and from which config file these commands are read. The shell script does not evaluate the config file by itself but passes it on to scripts which need it.
 
 * `-alerts "NULL 2 90 90 NULL NULL 10"` specifies at what values mails are sent. `NULL` means no mail is sent at all. The example in conjunction with the log line above would mean mails are sent if:
     - load is greater or equals 2
